@@ -1,4 +1,4 @@
-# Lecture 2#
+# Lecture 2 #
 ## Haskell classes ##
 ### Type inference ###
 In Haskell type annotations are optional - the compiler will try to infer the type if it is not given. In `GHCi` we can ask the type of an expression with `:t`, e.g.
