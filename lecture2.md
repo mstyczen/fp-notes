@@ -1,5 +1,12 @@
 # Lecture 2 #
-## Haskell classes ##
+## Haskell types ##
+### What is a type ###
+A **type** is a name for a collection of values.
+
+Example: `Bool` has two values `True` and `False`.
+Haskell syntax for typing: `True :: Bool`
+You can write type annotations (almost) anywhere in your Haskell program.
+
 ### Type inference ###
 In Haskell type annotations are optional - the compiler will try to infer the type if it is not given. In `GHCi` we can ask the type of an expression with `:t`, e.g.
 ```haskell
