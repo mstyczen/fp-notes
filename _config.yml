@@ -4,3 +4,6 @@ plugins:
 relative_links:
   enabled: true
   collections: true
+
+title: [Functional Programming course notes]
+description: [Course notes for CSE 3100 Functional Programming course at TU Delft]
