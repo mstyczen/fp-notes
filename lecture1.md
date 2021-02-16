@@ -1,5 +1,5 @@
 # Lecture 1 #
-Today:
+### Today: ###
 * Introduction to the course
 * What is functional programming?
 * Installing Stack and GHC
@@ -24,9 +24,12 @@ Today:
 * Week 3 - algebraic datatypes and type classes
 * Week 4 - applicatives and monads
 * Week 5 - lazy evaluation, reasoning about programs
+
 **Week 6-7:** Agda and dependent types:
+
 * Week 6: Agda, Curry-Howard correspondence
 * Week 7 indexed datatypes, equational reasoning
+
 **Week 8:**: rehearsal
 
 ### Course book ###
@@ -55,10 +58,11 @@ sum [1..10]
 ```
 ### What is functional programming? ###
 **Narrow definition:** functional programming is programming with functions as first-class data.
+
 **Broader definition:** functional programming is a toolbox of techniques for programming with functions as the primary components.
 
 ### A timeline of functional programming ###
-|  |  |
+|date|event|
 |-|-|
 |1930 |Alonzo Church introduces lambda calculus|
 |1950 |John McCarty develops Lisp, the first functional language|
@@ -89,7 +93,9 @@ A "functional programming language" is any language that allows us to use these 
 
 ### Example of programming languages ###
 **Pure functional languages**: Haskell, Elm, PureScript, Mercury, Agda, Coq, Idris, ...
+
 **Functional languages**: Lisp, Scheme, ML, Clojure, Racket, Erlang, OCaml, F#, ...
+
 **Other languages with functional features**: Python, JavaScript, Scala, Go, Java, C++11, ...
 
 ### Pure vs effectful languages ###
@@ -105,7 +111,9 @@ In a pure language, like Haskell, a function can only return a value or loop for
 ### What is Haskell? ### 
 Haskell is a statically typed, lazy, purely functional programming language.
 **Static types**: All types are checked at compile time.
+
 **Laziness**: Expressions are only evaluated when required.
+
 **Purity**: Functions do not have side effects.
 
 **Note**: Static typing /= explicit type annotations: Haskell can infer types automatically!
@@ -119,8 +127,11 @@ It also has some unique features such as lazy evaluation and monads.
 
 ### What is Agda? ###
 Agda is a dependently typed, total functional programming language and a proof assistant:
+
 **Dependent types**: Types can refer to program expressions.
+
 **Totality**: Functions must be defined and terminating for all inputs.
+
 **Proof assistance**: Express properties of programs in their types, proofs are checked by the type checker.
 
 ### Why Agda? ###
@@ -132,8 +143,10 @@ It also supports interactive development of programs in collaboration with the t
 ## The Glasgow Haskell Compiler ##
 ### GHC and Stack ###
 **GHC** (the Glasgow Haskell Compiler) is the most popular and modern Haskell compiler.
+
 **GHCi** is the interactive mode of GHC where you can type-check and evaluate Haskell
 expressions.
+
 **Stack** is a build tool for installing Haskell programs and libraries using GHC.
 
 ## A taste of Haskell ##
