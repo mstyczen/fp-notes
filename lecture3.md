@@ -16,7 +16,7 @@ How do we even write programs in such a language?
 
 ## Pattern matching ##
 ### Anatomy of a Haskell function ###
-```
+```haskell
 doubleSmallNumber :: Int -> Int
 doubleSmallNumber x = 
     if isSmall x then 2*x else x
@@ -32,7 +32,7 @@ Blocks start with keywords `where`, `let`, `case`, and `do`.
 
 ### Pattern matching - introduction ###
 We can define functions by case analysis using **pattern matching**:
-```
+```haskell
 not :: Bool -> Bool
 not True = False
 not False = True
@@ -40,14 +40,14 @@ not False = True
 Pattern matching is one of the most powerful and useful features of Haskell.
  ### Matching on numbers and characters ###
  We can match on **numbers**:
- ```
+ ```haskell
  int2string :: Int -> String
  int2string 1 = "one"
  int2string 2 = "two"
  int2string n = "many"
  ```
  We can also match on **characters**:
- ```
+ ```haskell
  hasDot :: Char -> Bool
  hasDot 'i' = True
  hasDot 'j' = True
@@ -56,7 +56,7 @@ Pattern matching is one of the most powerful and useful features of Haskell.
  
 
  ### Matching on multiple arguments ###
- ```
+ ```haskell
  xor :: Nool -> Bool -> Bool
  xor True False = True
  xor False True = True
@@ -65,13 +65,13 @@ Pattern matching is one of the most powerful and useful features of Haskell.
  You can match on several arguments at once. A **wildcard** `_` matches anything.
 
  ### Order of classes ###
- ```
+ ```haskell
  f True _ = 1
  f _ True = 2
  f _ _ = 3
  ```
  vs
- ```
+ ```haskell
  f _ True = 2
  f True _ = 1
  f _ _ = 3
@@ -81,12 +81,12 @@ Pattern matching is one of the most powerful and useful features of Haskell.
 
 ### Exercise - definition of `(&&)`###
 Redefine the library function `(&&) :: Bool -> Bool -> Bool`:
-```
+```haskell
 True && True = True
 _ && _ = False
 ```
 alternatively:
-```
+```haskell
 True && b = b
 False && _ = False
 ```
@@ -95,19 +95,19 @@ The latter version is **lazy** - it will not look at the value of the second arg
 
 ### Pattern matching on tuples ###
 An example of defining a function of vector addition over the 2D space.
-```
+```haskell
 addVectors :: (Int, Int) -> (Int, Int) -> (Int, Int)
 addVectors (x,y) (z,w) = (x+z, y+w)
 ```
 An example of `fst`, `snd`, `trd` definitions for 3-tuples.
-```
+```haskell
 fst3 (x,y,z) = x
 snd3 (x,y,z) = y
 trd (x,y,z) = z
 ```
 
 ### Pattern matching on lists ###
-```
+```haskell
 isEmpty :: [a] -> Bool
 isEmpty [] = True
 isEmpty (x:xs) = False
@@ -117,24 +117,24 @@ isEmpty (x:xs) = False
 * The type of `(:)` is `a-> [a] -> [a]`.  
 
 ### Incomplete matches ###
-```
+```haskell
 head :: [a] -> a
 head (x:xs) = x
 ```
 What happens when there's no clause?
-```
+```haskell
 > head []
 *** Exception: Non-exhaustive patterns in function head
 ```
 You can enable `=fwarn-incomplete-patterns`, to warn you for incomplete functions.
-```
+```haskell
 -- At top of the file
 {-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
 ```
 
 ### Using guards ###
 We can use **guards** to restrict when a clause is applied:
-```
+```haskell
 signum :: Int -> Int
 signum x | x < 0 = -1
          | x == 0 = 0
@@ -144,7 +144,7 @@ signum x | x < 0 = -1
 * `otherwise` is simply defined as `True`
 
 ### Mixing guards and pattern matching ###
-```
+```haskell
 capitalize :: String -> String
 capitalize (c : cs)
     | isLower c = (toUpper c) : cs
@@ -153,7 +153,7 @@ capitalize cs = cs
 
 ## Recursion ##
 ### Example: factorial ###
-```
+```haskell
 fac :: Int -> Int
 fac 0 = 1
 fac n = n * fac (n-1)
@@ -170,13 +170,13 @@ It will apply the last case, and will result in infinite loop. You could avoid t
 Recursion is not limited to numbers - we can also recurse over structured data such as lists:
 Examples:
 * a `product` function calculating the product of all elements of a list
-```
+```haskell
 product :: Num a => [a] -> a 
 product [] = `
 product (x:xs) = x * product xs
 ```
 * a `zip` function, that zips two lists together.
-```
+```haskell
 zip :: [a] -> [b] -> [(a,b)]
 zip (x:xs) (y:ys) = (x,y) : (zip xs ys)
 zip _ _ = []
@@ -190,7 +190,7 @@ zip _ _ = []
 
 ### Example: Insertion sort:
 Insertion sort definition using recursion and guards.
-```
+```haskell
 isort :: [Int] -> [int]
 isort [] = []
 isort (x:xs) = insert x (isort xs)
@@ -215,19 +215,19 @@ From *The pragmatic programmer* by Hunt & Thomas.
 A higher order function is a function that either takes a funciton as an argument or returns a function as a result. The latter can also be called a **curried function**.
 
 Example - a function `twice`, that takes a function and an argument applies the function twice.
-```
+```haskell
 twice :: (a -> a) -> a -> a
 twice f x = f f x
 ```
 Example output:
-```
+```haskell
 > twice (*2) 3
 12
 > twice reverse [1,2,3]
 [1,2,3]
 ```
 ### Higher order function: `map` ###
-```
+```haskell
 > :t map
 map :: (a -> b) -> [a] -> [b]
 > map (+1) [1,3,5,7]
@@ -236,7 +236,7 @@ map :: (a -> b) -> [a] -> [b]
 `map f xs` corresponds to the list comprehensions [f x | x <- xs].
 
 ### Higher order function: `filter` ###
-```
+```haskell
 > :t filter
 filter :: (a -> Bool) -> [a] -> [a]
 > filter even [1..8]
@@ -246,11 +246,11 @@ filter :: (a -> Bool) -> [a] -> [a]
 
 ### Three ways to write a program ###
 1. Using list comprehension
-```
+```haskell
 result = [f x | x <- xs, p x]
 ```
 2. Using pattern matching + recursion
-```
+```haskell
 result = aux xs
     where
         aux [] = []
@@ -258,12 +258,12 @@ result = aux xs
                    | otherwise = aux xs
 ```
 3. Using higher-order functions
-```
+```haskell
 result = map f (filter p xs)
 ```
 
 ### Higher-order functions: `all` and `any` ###
-```
+```haskell
 > :t all
 all :: Foldable t => (a -> Bool) -> t a -> Bool
 > :t +d all
@@ -278,7 +278,7 @@ Note: `:t + d` returns a specific type.
 
 ### Higher-order functions: takeWhile and dropWhile ###
 `takeWhile` takes all the elements that satisfy the predicate until the first non-matching element is found. `dropWhile` works similarly, but it drops the elements until it finds the first non-matching element.
-```
+```haskell
 > :t takeWhile
 takeWhile :: (a -> Bool) -> [a] -> [a]
 > :t dropWhile
@@ -290,38 +290,38 @@ dropWhile :: (a -> Bool) -> [a] -> [a]
 ### Live programming problems ###
 Define:
 1. `applys` - apply a sequence of functions to an array
-```
+```haskell
 applys :: [a->b] -> [a] -> [b]`
 applys fs xs = map app (zip fs xs)
     where
         app (f,x) = f x
 ``` 
 alternatively:
-```
+```haskell
 apply (f:fs) (x:xs) = f x : (applys fs xs)
 apply _ _ = []
 ```
 
 2. `flip` - takes a function that takes two arguments, and flip the order of the arguments
-```
+```haskell
 flip :: (a -> b -> c) -> (b -> a -> c)
 flip f = \a b -> f b a
 ``` 
 
 3. `first`
-```
+```haskell
 first :: (a -> b) -> (a,b) -> (b,c)
 first f (x,y) = (f x, y)
 ```
 
 4. `second`
-```
+```haskell
 second :: (a -> b) -> (a,b) -> (b,c)
 second f (x,y) = (x, f y)
 ```
 
 5. `(***)`
-```
+```haskell
 (***) : (a -> b) -> (c -> d) -> (a, c) -> (b, d)
 (f *** g) (x,y) = (f x, g y)
 ```
@@ -331,7 +331,7 @@ second f (x,y) = (x, f y)
 Conditionals can be expressed with `if ... then ... else ...`
 * `else` branch is required
 * `if ... then ... else ...` can be nested
-```
+```haskell
 abs :: Int -> Int
 abs x = if x < 0 then -x else x
 signum :: Int -> Int
@@ -342,7 +342,7 @@ signum x =
 
 ### Let bindings ###
 We can give a name to a subexpression using a **let binding**. Example:
-```
+```haskell
 cylinder :: Double -> Double -> Double
 cylinder r h =
     let sideArea = 2 * pi * r * h
@@ -356,14 +356,14 @@ Two major differences between `let` and `where`.
 
 ### Lambda expressions ###
 We can define functions anonymously using **lambda expressions** (syntax: `\x -> ...`):
-```
+```haskell
 add x y = x + y
-add` x = \y -> x + y
-add`` = \x -> (\y -> x + y)
-add``` = \x y -> x + y
+add' x = \y -> x + y
+add'' = \x -> (\y -> x + y)
+add''' = \x y -> x + y
 ```
 Constant function:
-```
+```haskell
 const :: b -> a -> b
 const x = \_ -> x
 ```
@@ -371,26 +371,26 @@ Produces a function that ignores its argument. Example use case - replacing all 
 
 ### Using `map`/`filter` with lambdas ###
 Example: you can replace this:
-```
+```haskell
 > let f x = x*2+1 in map f [1..5]
 [3,5,7,9,11]
 ```
 with this:
-```
+```haskell
 > map (\x -> x*2+1) [1..5]
 [3,5,7,9,11]
 ```
 
 ### Operator sections ###
 An operator sections is an operator that has been partially applied. Examples:
-```
+```haskell
 > :t (+1)
 (+1) :: Num a => a -> a
 > map (+1) [1..5]
 [2,3,4,5,6]
 ```
 and
-```
+```haskell
 > :t (>5)
 (>5) :: (Ord a, Num a) => a -> a
 > filter (>5) [1..10]
@@ -400,7 +400,7 @@ and
 ### Case expressions ###
 We can pattern match on a value using `case ... of ...`.
 Example:
-```
+```haskell
 describeList :: [a] -> String
 describeList xs =
     "The list is " ++
@@ -417,7 +417,7 @@ Define the following functions in three different styles: using a list comprehen
 * `allPairs :: [a] -> [b] -> [(a,b)]`
 
 Solution for the `allCaps` function:
-```
+```haskell
 import Data.Char (isLower, toUpper)
 
 allCaps xs = [toUpper x | x <- xs]

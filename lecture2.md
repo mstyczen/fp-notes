@@ -2,7 +2,7 @@
 ## Haskell classes ##
 ### Type inference ###
 In Haskell type annotations are optional - the compiler will try to infer the type if it is not given. In `GHCi` we can ask the type of an expression with `:t`, e.g.
-```
+```haskell
 > :t True
 Bool
 ```
@@ -29,12 +29,12 @@ Note: the module `Data.Text` has a more efficient representation of strings.
 
 ### Ranges of values ###
 You can construct a range from `i` to `j` by calling `[i..j]`. For example:
-``` 
+```haskell
 > [1..5] 
 [1,2,3,4,5]
 ```
 and:
-```
+```haskell
 > ['a'..'d']
 "abcd"
 ```
@@ -47,7 +47,7 @@ List had arbitrary length, but consistent types. Tuples may have varying types, 
 
 ### Function type `a->b` ###
 Examples:
-```
+```haskell
 not :: Bool -> Bool
 isDigit :: Char -> Bool
 ```
@@ -55,7 +55,7 @@ In general, `a->b` is the type of pure functions from `a` to `b`.
 
 ### Functions with several arguments ###
 Two ways:
-```
+```haskell
 add1 :: (Int, Int) -> Int
 add2 :: Int -> (Int -> Int)
 ```
@@ -65,11 +65,11 @@ add2 :: Int -> (Int -> Int)
 A function that returns another function is called a curried function.
 
 The function arrow `->` associates to the right:
-```
+```haskell
 a -> b -> c = a -> (b -> c)
 ```
 Function application associates to the left:
-```
+```haskell
 f x y = (f x) y
 ```
 
@@ -80,24 +80,24 @@ Many functions can be given several types, for example the `length` function has
 ### Examples of polymorphic functions ###
 
 Identity function:
-```
+```haskell
 id :: a -> a 
 ```
 First and second element of tuples:
 
-```
+```haskell
 fst :: (a,b) -> a
 snd :: (a,b) -> b
 ```
 
 Curry and uncurry:
-```
+```haskell
 curry :: ((a,b)->c) -> (a->b->c)
 uncurry :: (a->b->c) -> ((a,b) -> c)
 ```
 
 For lists:
-```
+```haskell
 head :: [a] -> a
 tail :: [a] -> [a]
 (!!) :: [a] -> a
@@ -110,21 +110,21 @@ unzip :: [(a,b)] -> ([a], [b])
 ### `error` and `undefined` ###
 Functions like `head` call `error` for an empty list.
 
-```
+```haskell
 undefined :: a
 error :: String -> a
 ```
 
 These functions throw a run-time error when evaluated, making your code partial - opposite of total, a function that is only defined for some of its input.
 
-*Advice*:
+**Advice**:
 * Only use `undefined` during development.
 * Only use `error` for unreachable cases.
 
 ### Type classes ###
 Question: what should be the type of `double x = x + x`?
 If you set it to `double :: Int - > Int`, it is too restrictive, as it works for `Float` too! You can utilize `Num` type class:
-```
+```haskell
 double :: Num a => a -> a
 ```
 
@@ -132,7 +132,7 @@ Num is an example of a **type class**: a collection of types that support a comm
 
 ### The `Eq` class ###
 Comparable types, implementing the equality/inequality operators.
-```
+```haskell
 (==) :: Eq a => a -> a -> Bool
 (/=) :: Eq a => a -> a -> Bool
 ```
@@ -147,7 +147,7 @@ Contains a single function `show`.
 ### The `Read` class ###
 Tries to construct an object from string. Contains a single function, `read`.
 For example:
-```
+```haskell
 > read "False" :: Bool
 False
 ```
@@ -160,7 +160,7 @@ Extension of `Num` class (if a type implements `Integral` it has to implement `N
 ### Infix for normal functions ###
 You can use any function as an infix operator by surrounding it with \` (backtick).
 For example:
-```
+```haskell
 > 5 `mod` 2
 1
 ```
@@ -171,7 +171,7 @@ Implements `/` - floating point division and
 
 ## List comprehensions ##
 We can construct new lists using a **list comprehension**:
-```
+```haskell
 > [x * x | x <- [1..5]]
 [1,4,9,16,25]
 ```
@@ -180,21 +180,21 @@ Compare with **set comprehensions** from mathematics: {x^2 | x \in [1,5]}
 
 ### Using multiple generators ###
 We can use more than one generator:
-```
+```haskell
 > [x * y | x <-[1,2,3], y<-[10,100]]
 [10, 100, 20, 200, 30, 300]
 ```
 **Note**: the order of generators matter:
 
 Later generators can depend on previous ones:
-```
+```haskell
 > [10*x + y | x <- [1..3], y <- [x..3]]
 [11,12,13,22,23,33]
 ```
 
 ### Filtering lists ###
 We can select only elements that satisfy a boolean predicate:
-```
+```haskell
 > [x | x <- [1..10], even x]
 [2,4,6,8,10]
 ```
@@ -203,11 +203,11 @@ The predicate `even x` is called a **guard**. A guard must be of type `Bool`.
 ### List comprehensions as a general control structure ###
 Haskell does not have built-in control, such as `for` or `while`. Instead, we use lists to define iterative algorithms.
  Example:
- ```
+ ```haskell
  result = sum [i*i | i <- [1..10]]
  ```
  instead of:
- ```
+ ```haskell
  int result = 0;
  int i = 0;
  while (i<=10) {
