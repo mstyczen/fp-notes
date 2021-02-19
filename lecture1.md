@@ -173,12 +173,12 @@ Reserved keywords (`if`, `let`, `data`, `type`, `module`, ...) are not allowed a
 Haskell uses `f x` for function application.
 
 |Mathematics|Haskell|
-|-|-|
-|f(x)|`f x`|
-|f(x,y)|`f x y`|
-|f(g(x))|`f (g x)`|
-|f(x,g(y))|`f x (g y)`|
-|f(x)g(y)|`f x * g y`|
+|----       |----|
+|f(x)       |`f x`|
+|f(x,y)     |`f x y`|
+|f(g(x))    |`f (g x)`|
+|f(x,g(y))  |`f x (g y)`|
+|f(x)g(y)   |`f x * g y`|
 
 Function application has highest priority in the parser and associates to the left.
 
