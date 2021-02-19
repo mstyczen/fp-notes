@@ -62,6 +62,7 @@ sum [1..10]
 **Broader definition:** functional programming is a toolbox of techniques for programming with functions as the primary components.
 
 ### A timeline of functional programming ###
+
 |date|event|
 |-|-|
 |1930 |Alonzo Church introduces lambda calculus|
@@ -170,6 +171,7 @@ Reserved keywords (`if`, `let`, `data`, `type`, `module`, ...) are not allowed a
 
 ### Function application in Haskell ###
 Haskell uses `f x` for function application.
+
 |Mathematics|Haskell|
 |-|-|
 |f(x)|`f x`|
