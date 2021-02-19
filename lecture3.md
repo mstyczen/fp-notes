@@ -57,7 +57,7 @@ Pattern matching is one of the most powerful and useful features of Haskell.
 
  ### Matching on multiple arguments ###
  ```haskell
- xor :: Nool -> Bool -> Bool
+ xor :: Bool -> Bool -> Bool
  xor True False = True
  xor False True = True
  xor _ _ = False
@@ -79,7 +79,7 @@ Pattern matching is one of the most powerful and useful features of Haskell.
  Does `f True True` evaluate to `1` or `2`?
  In the first case, it will evaluate to `1`, in the second case to `2`. It is an example of the order influencing the evaluation -  the first matching clause will be executed.
 
-### Exercise - definition of `(&&)`###
+### Exercise - definition of `(&&)` ###
 Redefine the library function `(&&) :: Bool -> Bool -> Bool`:
 ```haskell
 True && True = True
@@ -183,7 +183,7 @@ zip _ _ = []
 ```
 ### Writing recursive functions ###
 1. Write down the type
-2. Enumearte the cases
+2. Enumerate the cases
 3. Define base case
 4. Define recursive cases
 5. Generalize/simplify/join cases
@@ -212,7 +212,7 @@ From *The pragmatic programmer* by Hunt & Thomas.
 **Higher-order functions** are the ultimate expression of DRY, as they allow you to abstract over programming patterns.
 
 ### Higher order functions - introduction ###
-A higher order function is a function that either takes a funciton as an argument or returns a function as a result. The latter can also be called a **curried function**.
+A higher order function is a function that either takes a function as an argument or returns a function as a result. The latter can also be called a **curried function**.
 
 Example - a function `twice`, that takes a function and an argument applies the function twice.
 ```haskell
@@ -341,7 +341,7 @@ signum x =
 ```
 
 ### Let bindings ###
-We can give a name to a subexpression using a **let binding**. Example:
+We can give a name to a sub-expression using a **let binding**. Example:
 ```haskell
 cylinder :: Double -> Double -> Double
 cylinder r h =
@@ -352,7 +352,7 @@ cylinder r h =
 ### `let` vs `where` ###
 Two major differences between `let` and `where`.
 * `let` defines variables before they are used, `where` defines variables after they are used
-* `let ... in ...` can appear anywhere in an expression, `where` is always atttached to a clause.
+* `let ... in ...` can appear anywhere in an expression, `where` is always attached to a clause.
 
 ### Lambda expressions ###
 We can define functions anonymously using **lambda expressions** (syntax: `\x -> ...`):
@@ -367,7 +367,7 @@ Constant function:
 const :: b -> a -> b
 const x = \_ -> x
 ```
-Produces a function that ignores its argument. Example use case - replacing all the values in a list, you can mape them with a const function.
+Produces a function that ignores its argument. Example use case - replacing all the values in a list, you can map them with a const function.
 
 ### Using `map`/`filter` with lambdas ###
 Example: you can replace this:
@@ -432,11 +432,11 @@ The last one can be simplified to `allCaps'' xs = map toUpper`, then returning a
 ### Sample question #2 ###
 Someone who is just learning Haskell tells you the following statement:
 
-"The `foldr` function encampsulates all possible recursive functions on lists".
+"The `foldr` function encapsulates all possible recursive functions on lists".
 
 Do you agree or not? Explain your answer and illustrate with at least two examples or counterexamples that do not appear in chapter 7 of the book.
 
 ### Sample question #3 ###
-Implement a function: `giveChange :: Int -> [Int] -> [Int]`, such that `giveChange total coins` returns the shortest sublist `coins'` of `coins` such that `sum coins' = total`. You may assume that both `total` and all `coints` are greater than `0`, and that there is at least one possible solution.
+Implement a function: `giveChange :: Int -> [Int] -> [Int]`, such that `giveChange total coins` returns the shortest sub-list `coins'` of `coins` such that `sum coins' = total`. You may assume that both `total` and all `coins` are greater than `0`, and that there is at least one possible solution.
 
 Solution hint: one possible way to solve this is to generate all the possible solutions and then sort by their length. The first element will be the shortest list.

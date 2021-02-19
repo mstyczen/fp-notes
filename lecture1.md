@@ -40,8 +40,8 @@ Two required components:
 * Final project in Haskell (50%)
 * Online exam via Weblab (50%)
 
-### Weblab excercises:
-Weekly, ungraded, excercises on weblab.
+### Weblab exercises: ###
+Weekly, ungraded, exercises on Weblab.
 
 ## What is functional programming? ##
 ### Imperative vs functional programming ###
@@ -70,7 +70,7 @@ sum [1..10]
 |1970 |Robin Milner develops ML, a functional language with type inference and polymorphism|
 |1985 |David Turner develops Miranda, a lazy functional language|
 |1987 | An international committee starts development of Haskell|
-|1990s| Phil Wadler and others develop monads andtype classes|
+|1990s| Phil Wadler and others develop monads and type classes|
 |2003 |Publication of the Haskell report|
 |2007 |Ulf Norell develops Agda 2|
 |2010 |New Haskell 2010 standard|
@@ -101,7 +101,7 @@ A "functional programming language" is any language that allows us to use these 
 ### Pure vs effectful languages ###
 What can happen when we call a function?
 * it can return a value
-* it can modufy a (global) variable
+* it can modify a (global) variable
 * it can do some IO
 * it can throw an exception
 * it can go into an infinite loop

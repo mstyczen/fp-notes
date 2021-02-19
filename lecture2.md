@@ -14,12 +14,12 @@ In Haskell type annotations are optional - the compiler will try to infer the ty
 Bool
 ```
 
-When a function is applied to an argument of the wron type, you get a `type error`.
+When a function is applied to an argument of the wrong type, you get a `type error`.
 For example, try `1 + True`.
 
 ### Basic Haskell types ###
 * `Bool` - `True` and `False`
-* `Int` - 64 bit integere
+* `Int` - 64 bit integer
 * `Integer` - arbitrary size integer
 * `Float`, `Double` - floating point numbers
 * `Char` - characters, `'a', 'b'`
@@ -174,7 +174,7 @@ For example:
 
 ### The `Fractional` class ###
 Implements `/` - floating point division and 
-`recip` - calcualating inverse.
+`recip` - calculating inverse.
 
 ## List comprehensions ##
 We can construct new lists using a **list comprehension**:
