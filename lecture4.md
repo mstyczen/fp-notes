@@ -301,7 +301,7 @@ Then, at the top of your Haskell file, import QuickCheck:
 ```haskell
 import Test.QuickCheck
 ```
- ### Basic usage of QuickCheck ###
+### Basic usage of QuickCheck ###
  ```haskell
 import Test.QuickCheck
 
