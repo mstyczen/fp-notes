@@ -9,4 +9,5 @@ Here you can access the notes from specific lectures:
 |[Lecture 2](lecture2.md)   |Haskell basics                             |
 |[Lecture 3](lecture3.md)   |Defining functions                         |
 |[Lecture 4](lecture4.md)   |More higher order-functions + Property-based testing|
+|[Lecture 5](lecture5.md)   |Defining Haskell types |
 
