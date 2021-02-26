@@ -10,4 +10,5 @@ Here you can access the notes from specific lectures:
 |[Lecture 3](lecture3.md)   |Defining functions                         |
 |[Lecture 4](lecture4.md)   |More higher order-functions + Property-based testing|
 |[Lecture 5](lecture5.md)   |Defining Haskell types |
+|[Lecture 6](lecture6.md)   |Defining and working with type classes|
 
