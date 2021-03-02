@@ -221,7 +221,6 @@ instance Functor Tree where
 ```
 
 ### `IO` is a functor
-TODO
 `fmap f act` applies the pure function `f` to the result of the `IO a` action `act`, producing a new `IO b` action:
 ```haskell
     instance Functor IO where
