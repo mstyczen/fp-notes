@@ -12,3 +12,4 @@ Here you can access the notes from specific lectures:
 |[Lecture 5](lecture5.md)   |Defining Haskell types |
 |[Lecture 6](lecture6.md)   |Defining and working with type classes|
 |[Lecture 7](lecture7.md)   |IO and functors|
+|[Lecture 8](lecture8.md)   |Monads|
