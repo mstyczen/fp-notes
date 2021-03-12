@@ -14,3 +14,4 @@ Here you can access the notes from specific lectures:
 |[Lecture 7](lecture7.md)   |IO and functors|
 |[Lecture 8](lecture8.md)   |Monads|
 |[Lecture 9](lecture9.md)   |Laziness |
+|[lecture 10](lecture10.md) |Working with infinite data|
