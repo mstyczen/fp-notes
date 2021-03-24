@@ -16,4 +16,5 @@ Here you can access the notes from specific lectures:
 |[Lecture 9](lecture9.md)   |Laziness |
 |[Lecture 10](lecture10.md) |Working with infinite data|
 |[Lecture 11](lecture11.md) |Introduction to Agda|
-|[Lecture 12](lecture12.md) | Dependent types|
+|[Lecture 12](lecture12.md) |Dependent types|
+|[Lecture 13](lecture13.md) |The Curry-Howard Correspondence|
